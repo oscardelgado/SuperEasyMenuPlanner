@@ -1,5 +1,46 @@
-<LinearLayout
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"></LinearLayout>
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:name="com.oscardelgado83.supereasymenuplanner.DayMenuCardFragment"
+        android:id="@+id/fragment"
+        android:layout_gravity="center_horizontal"
+        tools:layout="@layout/fragment_day_menu_card" />
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:name="com.oscardelgado83.supereasymenuplanner.DayMenuCardFragment"
+        android:id="@+id/fragment2"
+        android:layout_gravity="center_horizontal"
+        tools:layout="@layout/fragment_day_menu_card" />
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:name="com.oscardelgado83.supereasymenuplanner.DayMenuCardFragment"
+        android:id="@+id/fragment3"
+        android:layout_gravity="center_horizontal"
+        tools:layout="@layout/fragment_day_menu_card" />
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:name="com.oscardelgado83.supereasymenuplanner.DayMenuCardFragment"
+        android:id="@+id/fragment4"
+        android:layout_gravity="center_horizontal"
+        tools:layout="@layout/fragment_day_menu_card" />
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:name="com.oscardelgado83.supereasymenuplanner.DayMenuCardFragment"
+        android:id="@+id/fragment5"
+        android:layout_gravity="center_horizontal"
+        tools:layout="@layout/fragment_day_menu_card" />
+</LinearLayout>

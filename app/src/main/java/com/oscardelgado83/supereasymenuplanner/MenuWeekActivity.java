@@ -1,5 +1,6 @@
 package com.oscardelgado83.supereasymenuplanner;
 
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,9 +11,9 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 
-public class MenuWeekActivity extends ActionBarActivity {
+public class MenuWeekActivity extends ActionBarActivity implements DayMenuCardFragment.OnFragmentInteractionListener {
 
-    @InjectView(R.id.simpleTest)
+//    @InjectView(R.id.simpleTest)
     TextView simpleTestTV;
 
     @Override
@@ -21,7 +22,7 @@ public class MenuWeekActivity extends ActionBarActivity {
         setContentView(R.layout.activity_menu_week);
         ButterKnife.inject(this);
 
-        simpleTestTV.setText("Butterknife test");
+//        simpleTestTV.setText("Butterknife test");
     }
 
 
@@ -42,5 +43,10 @@ public class MenuWeekActivity extends ActionBarActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }
