@@ -2,7 +2,8 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:weightSum="1">
 
     <fragment
         android:layout_width="match_parent"
@@ -43,4 +44,13 @@
         android:id="@+id/fragment5"
         android:layout_gravity="center_horizontal"
         tools:layout="@layout/fragment_day_menu_card" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Large Text"
+        android:id="@+id/simpleTest"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.70" />
 </LinearLayout>
