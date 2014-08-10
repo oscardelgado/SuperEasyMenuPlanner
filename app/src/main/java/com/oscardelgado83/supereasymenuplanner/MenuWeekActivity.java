@@ -4,14 +4,24 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 
 public class MenuWeekActivity extends ActionBarActivity {
+
+    @InjectView(R.id.simpleTest)
+    TextView simpleTestTV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_week);
+        ButterKnife.inject(this);
+
+        simpleTestTV.setText("Butterknife test");
     }
 
 
