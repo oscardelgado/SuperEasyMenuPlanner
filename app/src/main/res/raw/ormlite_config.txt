@@ -1,26 +1,16 @@
 #
-# generated on 2014/08/10 01:14:21
+# generated on 2014/08/17 10:19:14
 #
 # --table-start--
-dataClass=com.oscardelgado83.supereasymenuplanner.model.dao.SimpleData
-tableName=simpledata
+dataClass=com.oscardelgado83.supereasymenuplanner.model.dao.Course
+tableName=course
 # --table-fields-start--
 # --field-start--
 fieldName=id
 generatedId=true
 # --field-end--
 # --field-start--
-fieldName=string
-indexName=simpledata_string_idx
-# --field-end--
-# --field-start--
-fieldName=millis
-# --field-end--
-# --field-start--
-fieldName=date
-# --field-end--
-# --field-start--
-fieldName=even
+fieldName=name
 # --field-end--
 # --table-fields-end--
 # --table-end--

@@ -1,7 +1,7 @@
 package com.oscardelgado83.supereasymenuplanner.model.database;
 
 import com.j256.ormlite.android.apptools.OrmLiteConfigUtil;
-import com.oscardelgado83.supereasymenuplanner.model.dao.SimpleData;
+import com.oscardelgado83.supereasymenuplanner.model.dao.Course;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,7 +13,7 @@ import java.sql.SQLException;
  */
 public class DatabaseConfigUtil extends OrmLiteConfigUtil {
 
-    public static final Class<?>[] MODELS = {SimpleData.class};
+    public static final Class<?>[] MODELS = {Course.class};
 
     /**
      * This must be called as a stand alone app by a JRE instance and NOT by android.
@@ -28,6 +28,6 @@ public class DatabaseConfigUtil extends OrmLiteConfigUtil {
      * @throws Exception
      */
     public static void main(String[] args) throws SQLException, IOException {
-        writeConfigFile(new File("res/raw/ormlite_config.txt"), MODELS);
+        writeConfigFile(new File("app/src/main/res/raw/ormlite_config.txt"), MODELS);
     }
 }

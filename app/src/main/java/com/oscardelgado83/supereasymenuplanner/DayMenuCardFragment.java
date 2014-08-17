@@ -4,10 +4,14 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 
 /**
@@ -28,6 +32,11 @@ public class DayMenuCardFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private String weekDayString;
+
+    @InjectView(R.id.weekDayTV)
+    TextView weekDay;
 
     private OnFragmentInteractionListener mListener;
 
@@ -65,7 +74,10 @@ public class DayMenuCardFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_day_menu_card, container, false);
+        View view = inflater.inflate(R.layout.fragment_day_menu_card, container, false);
+        ButterKnife.inject(this, view);
+        weekDay.setText(weekDayString);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -107,4 +119,7 @@ public class DayMenuCardFragment extends Fragment {
         public void onFragmentInteraction(Uri uri);
     }
 
+    public void setWeekDayString(String weekDayString) {
+        this.weekDayString = weekDayString;
+    }
 }
