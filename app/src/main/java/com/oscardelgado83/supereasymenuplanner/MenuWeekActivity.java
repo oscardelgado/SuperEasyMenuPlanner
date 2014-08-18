@@ -12,7 +12,11 @@ import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.oscardelgado83.supereasymenuplanner.model.dao.Course;
 import com.oscardelgado83.supereasymenuplanner.model.database.DBHelper;
 
+import org.apache.commons.lang3.text.WordUtils;
+
+import java.text.DateFormatSymbols;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.ButterKnife;
 
@@ -53,7 +57,6 @@ public class MenuWeekActivity extends ActionBarActivity implements DayMenuCardFr
 
     @Override
     public void onFragmentInteraction(Uri uri) {
-
     }
 
     @Override
@@ -67,8 +70,7 @@ public class MenuWeekActivity extends ActionBarActivity implements DayMenuCardFr
 
     private DBHelper getHelper() {
         if (databaseHelper == null) {
-            databaseHelper =
-                    OpenHelperManager.getHelper(this, DBHelper.class);
+            databaseHelper = OpenHelperManager.getHelper(this, DBHelper.class);
         }
         return databaseHelper;
     }
@@ -79,10 +81,29 @@ public class MenuWeekActivity extends ActionBarActivity implements DayMenuCardFr
 
         DayMenuCardFragment fr = (DayMenuCardFragment) fragment;
 
+        DateFormatSymbols symbols = new DateFormatSymbols(Locale.getDefault());
+        String[] weekdays = symbols.getWeekdays();
+        String weekday = null;
+
         switch (fragment.getId()) {
+            case R.id.fragment:
+                weekday = weekdays[2]; // It starts on Sun, and 0 is empty
+                break;
+            case R.id.fragment2:
+                weekday = weekdays[3];
+                break;
             case R.id.fragment3:
-                fr.setWeekDayString("testWeekDay");
+                weekday = weekdays[4];
+                break;
+            case R.id.fragment4:
+                weekday = weekdays[5];
+                break;
+            case R.id.fragment5:
+                weekday = weekdays[6];
+                break;
             default:
+                break;
         }
+        fr.setWeekDayString(WordUtils.capitalize(weekday));
     }
 }
