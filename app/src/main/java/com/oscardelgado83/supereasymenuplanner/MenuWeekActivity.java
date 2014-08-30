@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
+import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.oscardelgado83.supereasymenuplanner.model.dao.Course;
 import com.oscardelgado83.supereasymenuplanner.model.database.DBHelper;
 
@@ -101,9 +102,22 @@ public class MenuWeekActivity extends ActionBarActivity implements DayMenuCardFr
             case R.id.fragment5:
                 weekday = weekdays[6];
                 break;
+            case R.id.fragment6:
+                weekday = weekdays[7];
+                break;
+            case R.id.fragment7:
+                weekday = weekdays[1];
+                break;
             default:
                 break;
         }
         fr.setWeekDayString(WordUtils.capitalize(weekday));
+
+        List<Course> firstCurses = getHelper().getCourseDao().queryForEq("courseType", Course.CourseType.FIRST); //TODO
+        List<Course> secondCurses = getHelper().getCourseDao().queryForEq("courseType", Course.CourseType.SECOND); //TODO
+        Course firstCourse = firstCurses.get(0); //TODO
+        Course secondCourse = secondCurses.get(1); //TODO
+        fr.setFirstCourse(firstCourse);
+        fr.setSecondCourse(secondCourse);
     }
 }

@@ -13,6 +13,8 @@ import com.oscardelgado83.supereasymenuplanner.model.dao.Course;
 
 import java.sql.SQLException;
 
+import static com.oscardelgado83.supereasymenuplanner.model.dao.Course.CourseType.*;
+
 /**
  * Created by oscar on 10/08/14.
  */
@@ -21,7 +23,7 @@ public class DBHelper extends OrmLiteSqliteOpenHelper {
     // name of the database file for your application -- change to something appropriate for your app
     private static final String DATABASE_NAME = "supereasymenuplanner.db";
     // any time you make changes to your database objects, you may have to increase the database version
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 6;
 
     private RuntimeExceptionDao<Course, Integer> courseDao = null;
 
@@ -54,10 +56,34 @@ public class DBHelper extends OrmLiteSqliteOpenHelper {
         // Insert initial data
         RuntimeExceptionDao<Course, Integer> dao = getCourseDao();
 
-        Course course = new Course("Sopa");
-        dao.create(course);
-        course = new Course("Filetes");
-        dao.create(course);
+        dao.create(new Course(FIRST, "Sopa"));
+        dao.create(new Course(SECOND, "Filetes"));
+        dao.create(new Course(SECOND, "San jacobos"));
+        dao.create(new Course(FIRST, "Esárragos"));
+        dao.create(new Course(FIRST, "Tallarines"));
+        dao.create(new Course(FIRST, "Ensalada"));
+        dao.create(new Course(FIRST, "Espinacas"));
+        dao.create(new Course(FIRST, "Alubias verdes"));
+        dao.create(new Course(FIRST, "Macarrones"));
+        dao.create(new Course(FIRST, "Arroz"));
+        dao.create(new Course(FIRST, "Puré"));
+        dao.create(new Course(SECOND, "Calamares"));
+        dao.create(new Course(SECOND, "Pizza"));
+        dao.create(new Course(SECOND, "Bakalao"));
+        dao.create(new Course(FIRST, "Gazpacho"));
+        dao.create(new Course(FIRST, "Patatas"));
+        dao.create(new Course(FIRST, "Lentejas"));
+        dao.create(new Course(FIRST, "Pimientos rellenos"));
+        dao.create(new Course(SECOND, "Pechugas de pollo"));
+        dao.create(new Course(SECOND, "Trucha"));
+        dao.create(new Course(SECOND, "Hamburguesa"));
+        dao.create(new Course(SECOND, "Pollo asado"));
+        dao.create(new Course(SECOND, "Tortilla"));
+        dao.create(new Course(SECOND, "Chuletas sajonia"));
+        dao.create(new Course(SECOND, "Salchichas"));
+        dao.create(new Course(SECOND, "Alitas de pollo"));
+        dao.create(new Course(FIRST, "Garbanzos"));
+
         Log.i(DBHelper.class.getName(), "created new entries in onCreate");
     }
 

@@ -7,8 +7,15 @@ import com.j256.ormlite.field.DatabaseField;
  */
 public class Course {
 
+    public enum CourseType {
+        FIRST, SECOND;
+    };
+
     @DatabaseField(generatedId = true)
     int id;
+
+    @DatabaseField
+    CourseType courseType;
 
     @DatabaseField
     String name;
@@ -17,15 +24,21 @@ public class Course {
         // needed by ormlite
     }
 
-    public Course(String name) {
+    public Course(CourseType type, String name) {
+        this.courseType = type;
         this.name = name;
     }
 
     @Override
     public String toString() {
         return "Course{" +
-                "id=" + id +
+                "courseType=" + courseType +
+                ", id=" + id +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    public String getName() {
+        return name;
     }
 }

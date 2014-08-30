@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.oscardelgado83.supereasymenuplanner.model.dao.Course;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
@@ -33,10 +35,18 @@ public class DayMenuCardFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private String weekDayString;
+    private String weekDay;
+    private Course firstCourse;
+    private Course secondCourse;
 
     @InjectView(R.id.weekDayTV)
-    TextView weekDay;
+    TextView weekDayTV;
+
+    @InjectView((R.id.firstCourseTV))
+    TextView firstCourseTV;
+
+    @InjectView((R.id.secondCourseTV))
+    TextView secondCourseTV;
 
     private OnFragmentInteractionListener mListener;
 
@@ -76,7 +86,9 @@ public class DayMenuCardFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_day_menu_card, container, false);
         ButterKnife.inject(this, view);
-        weekDay.setText(weekDayString);
+        weekDayTV.setText(weekDay);
+        firstCourseTV.setText(firstCourse.getName());
+        secondCourseTV.setText(secondCourse.getName());
         return view;
     }
 
@@ -120,6 +132,14 @@ public class DayMenuCardFragment extends Fragment {
     }
 
     public void setWeekDayString(String weekDayString) {
-        this.weekDayString = weekDayString;
+        this.weekDay = weekDayString;
+    }
+
+    public void setFirstCourse(Course firstCourse) {
+        this.firstCourse = firstCourse;
+    }
+
+    public void setSecondCourse(Course secondCourse) {
+        this.secondCourse = secondCourse;
     }
 }
