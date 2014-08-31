@@ -1,7 +1,11 @@
 package com.oscardelgado83.supereasymenuplanner.model.database;
 
+import android.view.Menu;
+
 import com.j256.ormlite.android.apptools.OrmLiteConfigUtil;
 import com.oscardelgado83.supereasymenuplanner.model.dao.Course;
+import com.oscardelgado83.supereasymenuplanner.model.dao.MenuDay;
+import com.oscardelgado83.supereasymenuplanner.model.dao.Week;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,7 +17,11 @@ import java.sql.SQLException;
  */
 public class DatabaseConfigUtil extends OrmLiteConfigUtil {
 
-    public static final Class<?>[] MODELS = {Course.class};
+    public static final Class<?>[] MODELS = {
+            Course.class,
+            MenuDay.class,
+            Week.class
+    };
 
     /**
      * This must be called as a stand alone app by a JRE instance and NOT by android.

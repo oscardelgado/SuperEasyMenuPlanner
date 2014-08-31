@@ -1,5 +1,5 @@
 #
-# generated on 2014/08/30 11:21:29
+# generated on 2014/08/31 02:12:27
 #
 # --table-start--
 dataClass=com.oscardelgado83.supereasymenuplanner.model.dao.Course
@@ -14,6 +14,40 @@ fieldName=courseType
 # --field-end--
 # --field-start--
 fieldName=name
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.oscardelgado83.supereasymenuplanner.model.dao.MenuDay
+tableName=menuday
+# --table-fields-start--
+# --field-start--
+fieldName=id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=firstCourse
+foreign=true
+# --field-end--
+# --field-start--
+fieldName=secondCourse
+foreign=true
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.oscardelgado83.supereasymenuplanner.model.dao.Week
+tableName=week
+# --table-fields-start--
+# --field-start--
+fieldName=id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=days
+foreign=true
 # --field-end--
 # --table-fields-end--
 # --table-end--

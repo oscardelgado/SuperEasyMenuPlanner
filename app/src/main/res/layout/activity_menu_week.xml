@@ -5,6 +5,38 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:weightSum="1">
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/left_arrow"
+            android:id="@+id/button6"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Medium Text"
+            android:id="@+id/dateTV"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:layout_weight="8" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/right_arrow"
+            android:id="@+id/button7"
+            android:layout_weight="1" />
+    </LinearLayout>
+
     <fragment
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -60,5 +92,26 @@
         android:id="@+id/fragment7"
         android:layout_gravity="center_horizontal"
         tools:layout="@layout/fragment_day_menu_card" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cambiar"
+            android:id="@+id/button4"
+            android:layout_weight="1" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fijar"
+            android:id="@+id/button5"
+            android:layout_weight="1" />
+    </LinearLayout>
 
 </LinearLayout>

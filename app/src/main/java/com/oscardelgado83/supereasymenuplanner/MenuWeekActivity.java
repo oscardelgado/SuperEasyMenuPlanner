@@ -1,25 +1,31 @@
 package com.oscardelgado83.supereasymenuplanner;
 
-import android.support.v4.app.FragmentTransaction;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
-import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.oscardelgado83.supereasymenuplanner.model.dao.Course;
+import com.oscardelgado83.supereasymenuplanner.model.dao.MenuDay;
+import com.oscardelgado83.supereasymenuplanner.model.dao.Week;
 import com.oscardelgado83.supereasymenuplanner.model.database.DBHelper;
 
 import org.apache.commons.lang3.text.WordUtils;
 
 import java.text.DateFormatSymbols;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 
 public class MenuWeekActivity extends ActionBarActivity implements DayMenuCardFragment.OnFragmentInteractionListener {
@@ -28,11 +34,21 @@ public class MenuWeekActivity extends ActionBarActivity implements DayMenuCardFr
 
     private DBHelper databaseHelper = null;
 
+    @InjectView(R.id.dateTV)
+    TextView dateTV;
+
+    Week currentWeek;
+    Calendar currentDay;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_week);
         ButterKnife.inject(this);
+
+        currentDay = GregorianCalendar.getInstance();
+        currentWeek = initializeWeek();
+        dateTV.setText(currentWeek.printWeekDescription());
 
         List<Course> allCourses = getHelper().getCourseDao().queryForAll();
     }
@@ -119,5 +135,26 @@ public class MenuWeekActivity extends ActionBarActivity implements DayMenuCardFr
         Course secondCourse = secondCurses.get(1); //TODO
         fr.setFirstCourse(firstCourse);
         fr.setSecondCourse(secondCourse);
+    }
+
+    private Week initializeWeek() {
+        Week currentWeek = new Week();
+        List<MenuDay> days = new ArrayList<MenuDay>();
+//        int offset = currentDay.get(Calendar.DAY_OF_WEEK) - currentDay.getFirstDayOfWeek();
+        int offset = currentDay.get(Calendar.DAY_OF_WEEK) - Calendar.MONDAY;
+        if (offset < 0) {
+            offset += 7;
+        }
+        for (int i = 0; i < 7; i++) {
+            MenuDay newDay = new MenuDay();
+            Calendar cal = new GregorianCalendar(
+                    currentDay.get(Calendar.YEAR),
+                    currentDay.get(Calendar.MONTH),
+                    currentDay.get(Calendar.DAY_OF_MONTH) - offset + i);
+            newDay.setMenuDate(new Date(cal.getTimeInMillis()));
+            days.add(newDay);
+        }
+        currentWeek.setDays(days);
+        return currentWeek;
     }
 }

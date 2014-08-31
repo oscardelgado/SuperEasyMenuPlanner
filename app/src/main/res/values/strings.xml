@@ -8,5 +8,7 @@
     <string name="monday">Lunes</string>
     <string name="firstCourse">Primer plato</string>
     <string name="secondCourse">Segundo Plato</string>
+    <string name="left_arrow"><![CDATA[<]]></string>
+    <string name="right_arrow"><![CDATA[>]]></string>
 
 </resources>
