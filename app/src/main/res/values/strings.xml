@@ -2,10 +2,6 @@
 <resources>
 
     <string name="app_name">Super Easy Menu Planner</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="monday">Lunes</string>
     <string name="firstCourse">Primer plato</string>
     <string name="secondCourse">Segundo Plato</string>
     <string name="left_arrow"><![CDATA[<]]></string>

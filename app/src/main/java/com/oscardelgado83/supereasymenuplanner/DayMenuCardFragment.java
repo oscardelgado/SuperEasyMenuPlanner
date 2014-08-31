@@ -23,7 +23,6 @@ import butterknife.InjectView;
  * to handle interaction events.
  * Use the {@link DayMenuCardFragment#newInstance} factory method to
  * create an instance of this fragment.
- *
  */
 public class DayMenuCardFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -67,6 +66,7 @@ public class DayMenuCardFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+
     public DayMenuCardFragment() {
         // Required empty public constructor
     }
@@ -87,8 +87,12 @@ public class DayMenuCardFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_day_menu_card, container, false);
         ButterKnife.inject(this, view);
         weekDayTV.setText(weekDay);
-        firstCourseTV.setText(firstCourse.getName());
-        secondCourseTV.setText(secondCourse.getName());
+        if (firstCourse != null) {
+            firstCourseTV.setText(firstCourse.getName());
+        }
+        if (secondCourse != null) {
+            secondCourseTV.setText(secondCourse.getName());
+        }
         return view;
     }
 
@@ -121,7 +125,7 @@ public class DayMenuCardFragment extends Fragment {
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
      * activity.
-     * <p>
+     * <p/>
      * See the Android Training lesson <a href=
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.

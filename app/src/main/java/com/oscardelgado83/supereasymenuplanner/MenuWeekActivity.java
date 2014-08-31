@@ -26,6 +26,7 @@ import java.util.Locale;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 
 
 public class MenuWeekActivity extends ActionBarActivity implements DayMenuCardFragment.OnFragmentInteractionListener {
@@ -40,6 +41,8 @@ public class MenuWeekActivity extends ActionBarActivity implements DayMenuCardFr
     Week currentWeek;
     Calendar currentDay;
 
+    private List<Course> availableCourses;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,8 +52,6 @@ public class MenuWeekActivity extends ActionBarActivity implements DayMenuCardFr
         currentDay = GregorianCalendar.getInstance();
         currentWeek = initializeWeek();
         dateTV.setText(currentWeek.printWeekDescription());
-
-        List<Course> allCourses = getHelper().getCourseDao().queryForAll();
     }
 
     @Override
@@ -120,6 +121,14 @@ public class MenuWeekActivity extends ActionBarActivity implements DayMenuCardFr
                 break;
             case R.id.fragment6:
                 weekday = weekdays[7];
+
+//                List<Course> firstCurses = getHelper().getCourseDao().queryForEq("courseType", Course.CourseType.FIRST); //TODO
+//                List<Course> secondCurses = getHelper().getCourseDao().queryForEq("courseType", Course.CourseType.SECOND); //TODO
+//                Course firstCourse = firstCurses.get(0); //TODO
+//                Course secondCourse = secondCurses.get(1); //TODO
+//                fr.setFirstCourse(firstCourse);
+//                fr.setSecondCourse(secondCourse);
+
                 break;
             case R.id.fragment7:
                 weekday = weekdays[1];
@@ -129,12 +138,6 @@ public class MenuWeekActivity extends ActionBarActivity implements DayMenuCardFr
         }
         fr.setWeekDayString(WordUtils.capitalize(weekday));
 
-        List<Course> firstCurses = getHelper().getCourseDao().queryForEq("courseType", Course.CourseType.FIRST); //TODO
-        List<Course> secondCurses = getHelper().getCourseDao().queryForEq("courseType", Course.CourseType.SECOND); //TODO
-        Course firstCourse = firstCurses.get(0); //TODO
-        Course secondCourse = secondCurses.get(1); //TODO
-        fr.setFirstCourse(firstCourse);
-        fr.setSecondCourse(secondCourse);
     }
 
     private Week initializeWeek() {
@@ -156,5 +159,39 @@ public class MenuWeekActivity extends ActionBarActivity implements DayMenuCardFr
         }
         currentWeek.setDays(days);
         return currentWeek;
+    }
+
+    @OnClick(R.id.left_arrowBT)
+    public void previous() {
+        currentDay.add(Calendar.DATE, -7);
+        refreshWeek();
+    }
+
+    @OnClick(R.id.right_arrowBT)
+    public void next() {
+        currentDay.add(Calendar.DATE, 7);
+        refreshWeek();
+    }
+
+    @OnClick(R.id.todayBT)
+    public final void goToToday() {
+        currentDay = GregorianCalendar.getInstance();
+        refreshWeek();
+    }
+
+    private void refreshWeek() {
+//        EntityManager em = emf.createEntityManager();
+
+//        try {
+//            findPersistedWeek(em);
+//        } catch (NoResultException e) {
+//            logger.info("no result. CurrentWeek={}", currentWeek);
+        currentWeek = initializeWeek();
+        dateTV.setText(currentWeek.printWeekDescription());
+//        } finally {
+//            em.close();
+//        }
+
+        availableCourses = getHelper().getCourseDao().queryForAll();
     }
 }
